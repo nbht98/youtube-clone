@@ -7,9 +7,6 @@
   --font-family: "Roboto", sans-serif;
 }
 
-/* 
-font-family: 'Roboto Mono', monospace; */
-
 body {
   margin: 0;
   background-color: var(--background-color);
@@ -27,9 +24,13 @@ header {
 }
 
 .main-flex {
-  display: flex;
-  justify-content: space-evenly;
-  align-items: flex-start;
+  display: grid;
+  grid-template-columns: clamp(300px, 68vw, 1300px) 430px;
+  grid-template-rows: auto auto;
+  grid-template-areas:
+    "primary secondary"
+    "comment secondary";
+  margin: 0 0 30px 0;
 }
 
 .flexbox {
@@ -108,9 +109,15 @@ header {
 }
 
 .primary {
-  width: 1270px;
-  margin: 10px 0 0 15px;
+  width: clamp(300px, 67vw, 1270px);
+  margin: 10px 0 0 30px;
   font-size: var(--font-size);
+  grid-area: primary;
+}
+
+iframe {
+  width: clamp(300px, 67vw, 1270px);
+  height: clamp(200px, 30vw, 600px);
 }
 
 ul {
@@ -141,7 +148,7 @@ li {
 .bar-render {
   width: 160px;
   border: 1px solid white;
-  margin-left: 880px;
+  margin-left: clamp(400px, calc(96% - 350px), 880px);
 }
 
 #hashtash {
@@ -154,6 +161,10 @@ li {
 #title {
   --font-size: 17px;
   font-size: var(--font-size);
+}
+
+#meta {
+  margin: 20px 0 0 30px;
 }
 
 #avatar {
@@ -180,6 +191,12 @@ pre {
 #more-btn {
   --text-color: #aaaaaa;
   color: var(--text-color);
+}
+
+.primary-comment {
+  grid-area: comment;
+  width: clamp(300px, 67vw, 1270px);
+  margin: 0 0 0 60px;
 }
 
 .comment-flex {
@@ -228,7 +245,7 @@ pre {
 
 .comment-grid {
   display: grid;
-  grid-template-columns: 56px 1213px;
+  grid-template-columns: 56px clamp(300px, calc(95% + 3px), 1213px);
   grid-template-rows: 23px 23px;
   grid-template-areas:
     "s1 s2"
@@ -248,7 +265,8 @@ pre {
 .secondary {
   width: 430px;
   font-size: var(--font-size);
-  margin: 10px 15px 0 0;
+  grid-area: secondary;
+  margin: 10px 15px 0 30px;
 }
 
 .thumbnail {
@@ -352,36 +370,60 @@ a {
   border: none;
   border-radius: 3px;
 }
-/* #account-comment {
-  border-bottom: 1px solid var(--line-color);
+
+@media screen and (max-width: 1500px) {
+  header {
+    width: clamp(400px, calc(90%+300px), 1500px);
+  }
+
+  .center {
+    margin: 0;
+  }
+
+  #search-bar {
+    width: clamp(300px, 40vw, 600px);
+  }
+  #search {
+    width: clamp(224px, calc(40vw - 75px), 524px);
+  }
+  .main-flex {
+    display: grid;
+    grid-template-columns: clamp(300px, 75%, 1400px);
+    grid-template-rows: auto;
+    grid-template-areas:
+      "primary"
+      "secondary"
+      "comment";
+  }
+  .primary {
+    width: clamp(300px, 90vw, 1270px);
+    margin: 10px 0 0 15px;
+  }
+
+  iframe {
+    width: clamp(300px, 90vw, 1270px);
+    height: clamp(200px, 40vw, 600px);
+  }
+
+  #meta {
+    margin: 20px 0 0 15px;
+  }
+
+  .secondary {
+    width: 430px;
+    font-size: var(--font-size);
+    grid-area: secondary;
+    margin: 10px 15px 0 15px;
+  }
+
+  .primary-comment {
+    grid-area: comment;
+    width: clamp(300px, 90vw, 1270px);
+    margin: 0 0 0 25px;
+  }
+
+  #item,
+  .thumnail-content {
+    width: clamp(300px, 90vw, 1270px);
+  }
 }
-
-#content-account {
-  height: 100px;
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
-  gap: 7px;
-} */
-
-/* .material-icons {
-  font-family: "Material Icons";
-  font-weight: normal;
-  font-style: normal;
-  font-size: 24px; 
-  display: inline-block;
-  line-height: 1;
-  text-transform: none;
-  letter-spacing: normal;
-  word-wrap: normal;
-  white-space: nowrap;
-  direction: ltr;
-  cursor: pointer;
-
-  -webkit-font-smoothing: antialiased;
-  text-rendering: optimizeLegibility;
-
-  -moz-osx-font-smoothing: grayscale;
-
-  font-feature-settings: "liga";
-} */
